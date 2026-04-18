@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    /* Subtle grain texture using a CSS radial gradient overlay */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@layer utilities {
+  .glow-border {
+    position: relative;
+    border-radius: 0.5rem;
+  }
+  .glow-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 0.6rem;
+    padding: 2px;
+    background: linear-gradient(45deg, transparent, transparent, transparent, transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    transition: background 0.3s ease;
+    z-index: -1;
+  }
+  .glow-border:hover::before {
+    background: linear-gradient(45deg, #E8006F, #F97316, #E8006F, #0A0E1A);
+  }
+  
+  .glow-border-active::before {
+    background: linear-gradient(45deg, #E8006F, #F97316, #E8006F, #0A0E1A);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0E1A; 
+}
+::-webkit-scrollbar-thumb {
+  background: #111827; 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E8006F; 
+}
