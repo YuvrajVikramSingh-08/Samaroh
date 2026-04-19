@@ -45,10 +45,12 @@ Powered by Supabase WebSockets, the platform maintains a persistent, live connec
 The login portal is tab-based:
 1. **Attendee Login**: Requires you to select the specific event from a dropdown, enter your registered email, and input your unique RSVP code.
 2. **Generate Code Tab**: If you do not have a code, attendees must select their event, enter their email, and click "Generate". The system securely stores this in the database and automatically switches you back to the login tab to sign in.
-3. **Organiser Login**: Requires an authorized email address to access the global Op-Center.
+3. **Organiser Login**: Requires an authorized email address to access the global Op-Center. **(For testing purposes, please use the pre-filled credentials: `tester@samaroh.com` / `Samaroh2024!` to securely log in. We assumed that this dashboard will be accessed by a particular event organiser for managing all their events).**
+
+![Login Page](https://github.com/user-attachments/assets/24498953-2473-41f5-ab03-8fc387fda9f7)
+
 
 ### Using the Organiser Dashboard
-- **Test Credentials**: The organiser login is pre-filled with the testing credentials (`tester@samaroh.com` / `Samaroh2024!`). Just click **Access Dashboard** to log in securely!
 - **Home View**: When an organiser logs in, they see a list of all events. They can click "Create Event" to duplicate a template event or click the "Edit" pencil icon to rename an event's location (which updates the live Google Maps for attendees).
 - **Op-Center Sidebar**: Clicking into an event opens the Op-Center sidebar.
   - **Overview**: View live heatmaps (Crowd, Wait Times, Complaints) and critical live stats (Currently Inside, Open Complaints).
@@ -56,6 +58,9 @@ The login portal is tab-based:
   - **Queues & Parking**: Add new virtual queues or parking zones and update their real-time status or depth.
   - **Schedule**: Add performances or sub-events.
   - **Broadcaster**: Send push-notifications directly to all attendee screens.
+ 
+![Organiser Dashboard](https://github.com/user-attachments/assets/843df149-5096-44c8-ad7a-f2df6684d4c0)
+
 
 ### Using the Attendee Dashboard
 - **Navigation**: Attendees use a bottom navigation bar optimized for mobile devices.
@@ -63,6 +68,9 @@ The login portal is tab-based:
 - **Schedule**: Browse the live schedule of sub-events and filter by category (e.g., VIP, Main Stage).
 - **Queues**: View live wait times for food or merch. Click "Join Queue" to enter virtually—the system will alert you when you are up next.
 - **Report Issue**: Submit a geo-tagged complaint by selecting the specific Zone you are in, and track its resolution status in real-time.
+
+![Attendee Dashboard](https://github.com/user-attachments/assets/6d09854c-a69b-4558-a870-3e47ed70b7ff)
+
 
 ---
 
