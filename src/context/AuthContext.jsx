@@ -11,10 +11,16 @@ export const AuthProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : null;
   });
 
-  const loginOrganiser = (email) => {
+  const loginOrganiser = async (email, password) => {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      console.error("Login failed:", error.message);
+      return false;
+    }
     const u = { role: 'organiser', email };
     setUser(u);
     localStorage.setItem('samaroh_user', JSON.stringify(u));
+    return true;
   };
 
   const loginAttendee = async (email, rsvpCode, eventId) => {
@@ -68,7 +74,8 @@ export const AuthProvider = ({ children }) => {
     return code;
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
     localStorage.removeItem('samaroh_user');
   };

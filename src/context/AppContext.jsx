@@ -19,13 +19,13 @@ export const AppProvider = ({ children }) => {
       { data: complaints },
       { data: schedules }
     ] = await Promise.all([
-      supabase.from('events').select('*').order('created_at', { ascending: false }),
-      supabase.from('grid_zones').select('*'),
-      supabase.from('attendees').select('*'),
-      supabase.from('queues').select('*'),
-      supabase.from('parking_zones').select('*'),
-      supabase.from('complaints').select('*'),
-      supabase.from('schedule_items').select('*')
+      supabase.from('events').select('*').order('created_at', { ascending: false }).limit(50),
+      supabase.from('grid_zones').select('*').limit(500),
+      supabase.from('attendees').select('*').limit(500),
+      supabase.from('queues').select('*').limit(500),
+      supabase.from('parking_zones').select('*').limit(500),
+      supabase.from('complaints').select('*').limit(500),
+      supabase.from('schedule_items').select('*').limit(500)
     ]);
 
     if (!eventsData) return;

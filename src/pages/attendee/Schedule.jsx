@@ -24,6 +24,14 @@ export const AttendeeSchedule = () => {
     setReminders(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
+  const generateGoogleCalendarUrl = (item) => {
+    const baseUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE";
+    const text = encodeURIComponent(item.name);
+    const details = encodeURIComponent(`Category: ${item.category}`);
+    const location = encodeURIComponent(`${event.venue} (Zone: ${item.zone})`);
+    return `${baseUrl}&text=${text}&details=${details}&location=${location}`;
+  };
+
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
@@ -60,14 +68,25 @@ export const AttendeeSchedule = () => {
                     <span className="flex items-center gap-1"><Users size={14}/> Capacity: {item.capacity}</span>
                   </div>
                 </div>
-                <Button 
-                  variant={reminders[item.id] ? 'secondary' : 'outline'} 
-                  className="flex items-center justify-center gap-2 md:w-auto w-full"
-                  onClick={() => toggleReminder(item.id)}
-                >
-                  <Bell size={16} className={reminders[item.id] ? 'text-primary' : ''} /> 
-                  {reminders[item.id] ? 'Reminder Set' : 'Remind Me'}
-                </Button>
+                <div className="flex flex-col gap-2 md:items-end w-full md:w-auto">
+                  <Button 
+                    variant={reminders[item.id] ? 'secondary' : 'outline'} 
+                    className="flex items-center justify-center gap-2 w-full"
+                    onClick={() => toggleReminder(item.id)}
+                  >
+                    <Bell size={16} className={reminders[item.id] ? 'text-primary' : ''} /> 
+                    {reminders[item.id] ? 'Reminder Set' : 'Remind Me'}
+                  </Button>
+                  <a 
+                    href={generateGoogleCalendarUrl(item)} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 w-full text-xs bg-white text-black py-2 px-3 rounded font-semibold hover:bg-gray-200 transition-colors"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.9 8.2,4.73 12.2,4.73C15.29,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.1,2C6.42,2 2.03,6.8 2.03,12C2.03,17.05 6.36,22 12.2,22C17.53,22 22,18.33 22,12.08C22,11.37 21.89,10.63 21.89,10.63Z" /></svg>
+                    Add to Calendar
+                  </a>
+                </div>
               </div>
             </Card>
           </div>

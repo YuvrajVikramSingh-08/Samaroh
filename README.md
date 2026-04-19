@@ -48,6 +48,7 @@ The login portal is tab-based:
 3. **Organiser Login**: Requires an authorized email address to access the global Op-Center.
 
 ### Using the Organiser Dashboard
+- **Test Credentials**: The organiser login is pre-filled with the testing credentials (`tester@samaroh.com` / `Samaroh2024!`). Just click **Access Dashboard** to log in securely!
 - **Home View**: When an organiser logs in, they see a list of all events. They can click "Create Event" to duplicate a template event or click the "Edit" pencil icon to rename an event's location (which updates the live Google Maps for attendees).
 - **Op-Center Sidebar**: Clicking into an event opens the Op-Center sidebar.
   - **Overview**: View live heatmaps (Crowd, Wait Times, Complaints) and critical live stats (Currently Inside, Open Complaints).

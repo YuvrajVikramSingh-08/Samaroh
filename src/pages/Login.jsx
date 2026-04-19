@@ -25,8 +25,8 @@ export const Login = () => {
   const [attError, setAttError] = useState('');
 
   // Organiser Form State
-  const [orgEmail, setOrgEmail] = useState('');
-  const [orgPass, setOrgPass] = useState('');
+  const [orgEmail, setOrgEmail] = useState('tester@samaroh.com');
+  const [orgPass, setOrgPass] = useState('Samaroh2024!');
 
   // Generate Code State
   const [genEmail, setGenEmail] = useState('');
@@ -53,11 +53,15 @@ export const Login = () => {
     }
   };
 
-  const handleOrganiserLogin = (e) => {
+  const handleOrganiserLogin = async (e) => {
     e.preventDefault();
     if (orgEmail && orgPass) {
-      loginOrganiser(orgEmail);
-      navigate('/organiser/dashboard');
+      const success = await loginOrganiser(orgEmail, orgPass);
+      if (success) {
+        navigate('/organiser/dashboard');
+      } else {
+        alert("Invalid email or password. Please make sure the test account is created in Supabase.");
+      }
     }
   };
 
@@ -145,6 +149,9 @@ export const Login = () => {
                 <label className="block text-sm text-gray-400 mb-1">Password</label>
                 <Input type="password" required value={orgPass} onChange={e => setOrgPass(e.target.value)} placeholder="••••••••" />
               </div>
+              <p className="text-xs text-gray-500 text-center">
+                Testing the app? Use <strong className="text-gray-400">tester@samaroh.com</strong> / <strong className="text-gray-400">Samaroh2024!</strong>
+              </p>
               <Button type="submit" className="w-full mt-2">Access Dashboard</Button>
             </form>
           )}
