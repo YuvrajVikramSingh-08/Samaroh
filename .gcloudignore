@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+dist-ssr
+npm-debug.log
+yarn-error.log
+.DS_Store
+# Ensure we DO NOT ignore .env so it gets uploaded to Cloud Build
+!.env
